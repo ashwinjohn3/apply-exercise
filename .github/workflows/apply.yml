@@ -19,4 +19,7 @@ jobs:
 
       # No `pip install` needed — the script uses only the Python standard library.
       - name: Submit
+        env:
+          # Inject the stored GitHub Secret into the script's environment.
+          B12_SIGNING_SECRET: ${{ secrets.B12_SIGNING_SECRET }}
         run: python3 submit.py
