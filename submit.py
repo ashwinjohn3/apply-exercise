@@ -10,7 +10,6 @@ Run modes:
 """
 
 from __future__ import annotations
-from dotenv import load_dotenv
 
 import hashlib
 import hmac
@@ -21,7 +20,16 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-load_dotenv()
+# Load a local .env for convenience when running on a developer machine.
+# python-dotenv is intentionally NOT a CI dependency: in GitHub Actions the
+# signing secret is injected straight into the environment, so a missing library
+# (or missing .env file) must never be fatal.
+try:
+    from dotenv import load_dotenv
+except ModuleNotFoundError:
+    pass
+else:
+    load_dotenv()
 
 ENDPOINT = "https://b12.io/apply/submission"
 
