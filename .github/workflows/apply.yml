@@ -1,0 +1,22 @@
+name: Submit application
+
+# Manual trigger only: we submit deliberately, once, by clicking "Run workflow".
+# (A push trigger would re-submit on every commit.)
+on:
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # No `pip install` needed — the script uses only the Python standard library.
+      - name: Submit
+        run: python3 submit.py
