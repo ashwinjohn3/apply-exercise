@@ -29,7 +29,7 @@ SIGNING_SECRET = os.environ.get("B12_SIGNING_SECRET")
 
 # Applicant details.
 NAME = "Ashwin John Chempolil"
-EMAIL = "ashwinjohn3@gmail.com"
+EMAIL = "ashwinchempolil@gmail.com"
 RESUME_LINK = "https://github.com/ashwinjohn3/ajc-portfolio/raw/main/public/resume.pdf"
 
 
